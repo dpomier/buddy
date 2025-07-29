@@ -382,10 +382,10 @@ class SuitesRunner
 					}
 				};
 				
-				function reportFailure(error : Dynamic, stack : Array<StackItem>) : Void {
+				function reportFailure(error : Dynamic, stack : #if (haxe_ver >= 4.1) CallStack #else Array<StackItem> #end) : Void {
 					if (hasCompleted) return;
 					spec.status = Failed;
-					spec.failures.push(new Failure(error, stack));
+					spec.failures.push(new Failure(error, #if (haxe_ver >= 4.1) @:privateAccess stack.asArray() #else stack #end));
 				}
 				
 				function specCompleted(status : SpecStatus) : Null<SyncTestResult> {
