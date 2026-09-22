@@ -11,7 +11,7 @@ import buddy.BuddySuite.SpecStatus;
 using Lambda;
 using StringTools;
 
-@:enum abstract Color(Int) {
+#if (haxe_ver >= 4.0) enum #else @:enum #end abstract Color(Int) {
 	var Default = 39;
 	var Red = 31;
 	var Yellow = 33;
